@@ -36,7 +36,6 @@ class MCQs {
     public MCQs(String question, String[] options, int correctOption) {
         this.question = question;
         this.options = options;
-        // Adjust the correct option index to match the options array
         this.correctOption = correctOption - 1; // Subtract 1 to convert to 0-based indexing
     }
 
@@ -61,7 +60,7 @@ public class OnlineExamSystem {
     private int timeLimit;
     private Timer timer;
     private boolean examStarted;
-    private int currentQuestionIndex; // Track the current question index
+    private int currentQuestionIndex; 
 
     public OnlineExamSystem(User user, MCQs[] mcqs, int timeLimit) {
         this.currentUser = user;
@@ -70,7 +69,7 @@ public class OnlineExamSystem {
         this.userAnswers = new int[totalQuestions];
         this.timeLimit = timeLimit;
         this.examStarted = false;
-        this.currentQuestionIndex = 0; // Initialize current question index
+        this.currentQuestionIndex = 0; 
     }
 
     public void login() {
@@ -90,7 +89,6 @@ public class OnlineExamSystem {
             if (questionNumber >= 0 && questionNumber < totalQuestions) {
                 userAnswers[questionNumber] = selectedOption;
                 System.out.println("Answer for question " + (questionNumber + 1) + " selected.");
-                // After selecting the answer, display the next question
                 currentQuestionIndex++;
                 if (currentQuestionIndex < totalQuestions) {
                     displayNextQuestion();
@@ -123,9 +121,7 @@ public class OnlineExamSystem {
                         System.out.println("Time Left: " + (timeLimit - minutesPassed) + " minutes");
                     }
                 }
-            }, 60000, 60000); // Start the timer after 1 minute, and run it every minute thereafter
-            
-            // Display each question sequentially
+            }, 60000, 60000); 
             displayNextQuestion();
         } else {
             System.out.println("Exam has already started.");
@@ -140,7 +136,7 @@ public class OnlineExamSystem {
             for (int j = 0; j < options.length; j++) {
                 System.out.println(options[j]);
             }
-            acceptUserInput(); // Accept user input for the current question
+            acceptUserInput(); 
         }
     }
 
